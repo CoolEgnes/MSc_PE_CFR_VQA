@@ -146,8 +146,10 @@ if __name__ == '__main__':
     torch.cuda.set_device(args.gpu)
 
     if args.dataset == 'GQA':
-        dictionary = Dictionary.load_from_file('D:/CFR_train_extract_0711/dictionary.pkl')
-        eval_dset = GQAFeatureDataset(args, args.split, dictionary, dataroot='D:/CFR_train_extract_0711', adaptive=True)
+        # dictionary = Dictionary.load_from_file('D:/CFR_train_extract_0711/dictionary.pkl')
+        # eval_dset = GQAFeatureDataset(args, args.split, dictionary, dataroot='D:/CFR_train_extract_0711', adaptive=True)
+        dictionary = Dictionary.load_from_file('./data/dictionary.pkl')
+        eval_dset = GQAFeatureDataset(args, args.split, dictionary, dataroot='./data', adaptive=True)
     else:
         raise BaseException("Dataset name not found!")
 
