@@ -286,7 +286,8 @@ def evaluate(model, dataloader, args, criterion):
 
                 # get the answers in natural language
                 # with open('/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/cache/label2ans.pkl/label2ans.pkl', "rb") as trainval_label2ans_file:
-                with open('D:/CFR_train_extract_0711/cache/label2ans.pkl', "rb") as trainval_label2ans_file:
+                # with open('D:/CFR_train_extract_0711/cache/label2ans.pkl', "rb") as trainval_label2ans_file:
+                with open('./data/cache/label2ans.pkl', "rb") as trainval_label2ans_file:
                     trainval_label2ans = pickle.load(trainval_label2ans_file)
                     # trainval_label2ans_keys = trainval_label2ans.keys()
                     a_strs = [trainval_label2ans[key] for key in
