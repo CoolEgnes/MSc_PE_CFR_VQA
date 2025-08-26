@@ -23,5 +23,22 @@ Please install dependence package by run following command:
 ```bash
 pip install -r requirements.txt
 ```
-To train the model, run the train.sh  
-To test the model, run the test.sh  
+## Dataset
+The official GQA dataset for VQA can be downloaded via [GQA](https://cs.stanford.edu/people/dorarad/gqa/about.html). The CFR_VQA processed the dataset to align with their design. We further repartitioned their dataset for fair training and evaluation. All the data files are included in the data/ folder. Before running the project, run the data_process/concat_dataset.py first.  
+Some data files are split into smaller chunks to upload to this repository, the data_process/concat_dataset.py concats the split files.
+Modify the "test_out" path to specify the output path of the concatenated file.  
+Modify the split to "test", "train" and "ori_train", the test_out should be: "./data/test.hdf5", "./data/train.hdf5" and "./data/ori_train.hdf5".  
+## Training  
+To train the model, run the train.sh:  
+```
+sh train.sh
+```
+## Test
+We didn't include the trained model in the repository due to the limited size, after training the model, test it by running:  
+```
+sh test.sh
+```
+We recommend running in the PyCharm, the same as how this project is implemented. If so, specify the hyperparameters in the script configuration.  
+## Reuslt
+Our model achieves an accuracy of 76.32%, 1.07% higher than the baseline. We display the ablation study result and the comparision of our model with other benchmarks as below:  
+<img width="420" height="162" alt="image" src="https://github.com/user-attachments/assets/fcc54253-711e-49d2-8298-5a2819a18c4c" /> <img width="282" height="197" alt="image" src="https://github.com/user-attachments/assets/00a76caa-f5bc-464b-8aef-bf6196ef9907" />
