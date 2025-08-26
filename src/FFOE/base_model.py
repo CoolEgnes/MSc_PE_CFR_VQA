@@ -197,9 +197,12 @@ def build_CFRF_Model(dataset, args):
 
     if hasattr(args, 'tfidf'):
         if args.dataset == 'GQA':
-            w_emb = tfidf_loading(args.tfidf, w_emb, args,'D:/CFR_train_extract_0711')
-            sw_emb = tfidf_loading(args.tfidf, sw_emb, args, 'D:/CFR_train_extract_0711')
-            ew_emb = tfidf_loading(args.tfidf, ew_emb, args, 'D:/CFR_train_extract_0711')
+            # w_emb = tfidf_loading(args.tfidf, w_emb, args,'D:/CFR_train_extract_0711')
+            # sw_emb = tfidf_loading(args.tfidf, sw_emb, args, 'D:/CFR_train_extract_0711')
+            # ew_emb = tfidf_loading(args.tfidf, ew_emb, args, 'D:/CFR_train_extract_0711')
+            w_emb = tfidf_loading(args.tfidf, w_emb, args, './data')
+            sw_emb = tfidf_loading(args.tfidf, sw_emb, args, './data')
+            ew_emb = tfidf_loading(args.tfidf, ew_emb, args, './data')
         elif args.dataset == 'VQA':
             w_emb = tfidf_loading(args.tfidf, w_emb, args, 'data/vqa')
             sw_emb = tfidf_loading(args.tfidf, sw_emb, args, 'data/vqa')
