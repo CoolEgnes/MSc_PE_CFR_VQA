@@ -193,7 +193,8 @@ if __name__ == '__main__':
 
     # flag to load only once the ori_train.hdf5
     if args.dataset == 'GQA':
-        dictionary = Dictionary.load_from_file("D:/CFR_train_extract_0711/dictionary.pkl")
+        # dictionary = Dictionary.load_from_file("D:/CFR_train_extract_0711/dictionary.pkl")
+        dictionary = Dictionary.load_from_file("./data/dictionary.pkl")
         train_dset = GQAFeatureDataset(args, 'train', dictionary, adaptive=True, train_read=False)
         val_dset = GQAFeatureDataset(args, 'val', dictionary, adaptive=True, train_read=True, train_dset=train_dset)
 
