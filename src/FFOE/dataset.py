@@ -186,7 +186,9 @@ def _load_gqa_dataset(dataroot, args, name, img_id2val):
 
 class GQAFeatureDataset(Dataset):
     # def __init__(self, args, name, dictionary, dataroot="/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/", adaptive=False, train_read=False, train_dset=None):
-    def __init__(self, args, name, dictionary,dataroot="D:/CFR_train_extract_0711/", adaptive=False, train_read=False, train_dset=None):
+    # def __init__(self, args, name, dictionary,dataroot="D:/CFR_train_extract_0711/", adaptive=False, train_read=False, train_dset=None):
+    def __init__(self, args, name, dictionary, dataroot="./data/", adaptive=False, train_read=False,
+                 train_dset=None):
         super(GQAFeatureDataset, self).__init__()
         assert name in ['train', 'val', 'test-dev2015', 'test2015', 'test']
         # cwd = os.getcwd()
@@ -214,18 +216,18 @@ class GQAFeatureDataset(Dataset):
 
         # load stat_word
         # 'val_6_stats_words.json', contains objects in each image
-        # self.stat_words = json.load(open("/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/%s_%s_stats_words.json" % (name, args.topk)))  # e.g. "2382986": "cat,brown,towel,bag,box,plastic,container,sandwich,above,green,lettuce,picture,white,cats,color,under,towels,bed,chairs,tan,black,bottom,bags,top,pillow,sandwiches,chair,hair,sticker"
-        # self.stat_skip_imgid = json.load(open("/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/%s_%s_stats_skip_imgid.json" % (name, args.topk)))  # contains the id of images that don't have objects
-        self.stat_words = json.load(open("D:/CFR_train_extract_0711/%s_%s_stats_words.json" % (name, args.topk)))  # e.g. "2382986": "cat,brown,towel,bag,box,plastic,container,sandwich,above,green,lettuce,picture,white,cats,color,under,towels,bed,chairs,tan,black,bottom,bags,top,pillow,sandwiches,chair,hair,sticker"
-        self.stat_skip_imgid = json.load(open("D:/CFR_train_extract_0711/%s_%s_stats_skip_imgid.json" % (name, args.topk)))  # contains the id of images that don't have objects
+        # self.stat_words = json.load(open("D:/CFR_train_extract_0711/%s_%s_stats_words.json" % (name, args.topk)))  # e.g. "2382986": "cat,brown,towel,bag,box,plastic,container,sandwich,above,green,lettuce,picture,white,cats,color,under,towels,bed,chairs,tan,black,bottom,bags,top,pillow,sandwiches,chair,hair,sticker"
+        # self.stat_skip_imgid = json.load(open("D:/CFR_train_extract_0711/%s_%s_stats_skip_imgid.json" % (name, args.topk)))  # contains the id of images that don't have objects
+        self.stat_words = json.load(open("./data/%s_%s_stats_words.json" % (name, args.topk)))  # e.g. "2382986": "cat,brown,towel,bag,box,plastic,container,sandwich,above,green,lettuce,picture,white,cats,color,under,towels,bed,chairs,tan,black,bottom,bags,top,pillow,sandwiches,chair,hair,sticker"
+        self.stat_skip_imgid = json.load(open("./data/%s_%s_stats_skip_imgid.json" % (name, args.topk)))  # contains the id of images that don't have objects
 
         self.stat_features = {}
 
         # load attribute word
-        # self.attr_words = json.load(open("/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/%s_attr_words_non_plural_words.json" % name))  # contains the phrases like "black zebra"
-        # self.attr_skip_imgid = json.load(open("/scratch/xcwx3620/MSc_Project/Codes/CFR_VQA-main-zhd/data/gqa/%s_attr_skip_imgid.json" % name))
-        self.attr_words = json.load(open("D:/CFR_train_extract_0711/%s_attr_words_non_plural_words.json" % name))  # contains the phrases like "black zebra"
-        self.attr_skip_imgid = json.load(open("D:/CFR_train_extract_0711/%s_attr_skip_imgid.json" % name))
+        # self.attr_words = json.load(open("D:/CFR_train_extract_0711/%s_attr_words_non_plural_words.json" % name))  # contains the phrases like "black zebra"
+        # self.attr_skip_imgid = json.load(open("D:/CFR_train_extract_0711/%s_attr_skip_imgid.json" % name))
+        self.attr_words = json.load(open("./data/%s_attr_words_non_plural_words.json" % name))  # contains the phrases like "black zebra"
+        self.attr_skip_imgid = json.load(open("./data/%s_attr_skip_imgid.json" % name))
 
         self.skip_imgid = []
         self.attr_features = {}
