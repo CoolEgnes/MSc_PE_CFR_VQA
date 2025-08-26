@@ -175,7 +175,7 @@ def tfidf_from_questions(names, dictionary, dataroot='data', target=['gqa']):
 
     # Latent word embeddings
     emb_dim = 300
-    glove_file = 'data/gqa/glove/glove.6B.%dd.txt' % emb_dim
+    glove_file = 'data/glove/glove.6B.%dd.txt' % emb_dim
     weights, word2emb = create_glove_embedding_init(dictionary.idx2word[N:], glove_file)
     print('tf-idf stochastic matrix (%d x %d) is generated.' % (tfidf.size(0), tfidf.size(1)))
 
